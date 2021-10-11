@@ -5,7 +5,7 @@ import androidx.room.PrimaryKey
 import java.util.*
 
 @Entity(tableName = "actual_expenditure")
-data class ActualExpenditure (
+data class LocalActualExpenditure (
     @PrimaryKey(autoGenerate = true) val id: Int,
     val date: Date,
     val value: Int,
