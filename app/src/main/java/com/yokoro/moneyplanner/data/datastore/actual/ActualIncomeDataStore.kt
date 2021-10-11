@@ -1,24 +1,43 @@
 package com.yokoro.moneyplanner.data.datastore.actual
 
-import com.yokoro.moneyplanner.domain.entity.Income
-import com.yokoro.moneyplanner.domain.entity.SearchRange
+import com.yokoro.moneyplanner.data.database.AppDatabase
+import com.yokoro.moneyplanner.data.database.actual.LocalActualIncome
+import com.yokoro.moneyplanner.data.database.plan.LocalExpectedIncome
+import com.yokoro.moneyplanner.domain.entity.actual.ActualIncome
+import com.yokoro.moneyplanner.domain.entity.shared.SearchRange
 import com.yokoro.moneyplanner.domain.repository.ActualIncomeRepository
 import com.yokoro.moneyplanner.domain.usecase.Either
+import org.koin.core.KoinComponent
+import org.koin.core.inject
 
-class ActualIncomeDataStore: ActualIncomeRepository {
-    override fun registerActualIncome(value: Income): Either<Income> {
+class ActualIncomeDataStore: ActualIncomeRepository, KoinComponent {
+    private val database: AppDatabase by inject()
+
+    override fun registerActualIncome(actualIncome: ActualIncome): Either<ActualIncome> {
+        database.actualIncomeDao().insert(
+            LocalActualIncome(
+                id = 0,
+                date = actualIncome.date.value,
+                value = actualIncome.value.value,
+                reason = when(val v = actualIncome.reason.value) {
+                    is Either.Specify -> v.value
+                    else -> null
+                }
+            )
+        )
+
+        return Either.Empty()
+    }
+
+    override fun removeActualIncome(actualIncome: ActualIncome): Either<ActualIncome> {
         TODO("Not yet implemented")
     }
 
-    override fun removeActualIncome(value: Income): Either<Income> {
+    override fun updateActualIncome(actualIncome: ActualIncome): Either<ActualIncome> {
         TODO("Not yet implemented")
     }
 
-    override fun updateActualIncome(value: Income): Either<Income> {
-        TODO("Not yet implemented")
-    }
-
-    override fun getActualIncome(range: SearchRange): Either<List<Income>> {
+    override fun getActualIncome(range: SearchRange): Either<List<ActualIncome>> {
         TODO("Not yet implemented")
     }
 
