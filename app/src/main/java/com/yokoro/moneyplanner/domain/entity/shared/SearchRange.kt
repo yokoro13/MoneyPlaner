@@ -1,4 +1,4 @@
-package com.yokoro.moneyplanner.domain.entity
+package com.yokoro.moneyplanner.domain.entity.shared
 
 import com.yokoro.moneyplanner.domain.usecase.Either
 

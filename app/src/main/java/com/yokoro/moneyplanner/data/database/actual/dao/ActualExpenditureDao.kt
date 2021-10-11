@@ -1,23 +1,24 @@
 package com.yokoro.moneyplanner.data.database.actual.dao
 
 import androidx.room.*
-import com.yokoro.moneyplanner.data.database.actual.ActualExpenditure
+import com.yokoro.moneyplanner.data.database.actual.LocalActualExpenditure
+import java.time.LocalDate
 import java.util.*
 
 @Dao
 interface ActualExpenditureDao {
     @Insert
-    fun insert(expenditure: ActualExpenditure)
+    fun insert(expenditureLocal: LocalActualExpenditure)
 
     @Update
-    fun update(expenditure: ActualExpenditure)
+    fun update(expenditureLocal: LocalActualExpenditure)
 
     @Delete
-    fun delete(expenditure: ActualExpenditure)
+    fun delete(expenditureLocal: LocalActualExpenditure)
 
     @Query("select * from actual_expenditure where date = :date")
-    fun getActualExpenditureAt(date: Date): List<ActualExpenditure>
+    fun getActualExpenditureAt(date: LocalDate): List<LocalActualExpenditure>
 
     @Query("select * from actual_expenditure where date between :from and :to")
-    fun getActualExpenditureBetween(from: Date, to: Date): List<ActualExpenditure>
+    fun getActualExpenditureBetween(from: LocalDate, to: LocalDate): List<LocalActualExpenditure>
 }
