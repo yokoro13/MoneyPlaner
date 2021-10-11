@@ -1,6 +1,5 @@
-package com.yokoro.moneyplaner.domain.usecase.resister
+package com.yokoro.moneyplaner.domain.usecase.actual.expenditure
 
-import com.yokoro.moneyplaner.domain.entity.Date
 import com.yokoro.moneyplaner.domain.entity.Expenditure
 import com.yokoro.moneyplaner.domain.repository.ActualExpenditureRepository
 import com.yokoro.moneyplaner.domain.usecase.Either
@@ -10,7 +9,7 @@ class RegisterActualExpenditure (
     val repository: ActualExpenditureRepository
 ): IUseCase<Expenditure, Expenditure> {
 
-    override fun execute(value: Expenditure): Either<Expenditure> {
-        return repository.registerActualExpenditure(value)
-    }
+    override fun execute(value: Expenditure): Either<Expenditure> =
+        repository.registerActualExpenditure(value)
+
 }

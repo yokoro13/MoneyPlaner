@@ -1,4 +1,4 @@
-package com.yokoro.moneyplaner.domain.usecase.plan
+package com.yokoro.moneyplaner.domain.usecase.plan.income
 
 import com.yokoro.moneyplaner.domain.entity.Date
 import com.yokoro.moneyplaner.domain.entity.Expenditure
@@ -11,7 +11,7 @@ class RegisterExpectedIncome (
     val repository: ExpectedIncomeRepository
     ): IUseCase<Income, Income> {
 
-    override fun execute(value: Income): Either<Income> {
-        return repository.registerExpectedIncome(value)
-    }
+    override fun execute(value: Income): Either<Income> =
+        repository.registerExpectedIncome(value)
+
 }
