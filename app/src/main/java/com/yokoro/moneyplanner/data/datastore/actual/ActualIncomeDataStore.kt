@@ -1,8 +1,7 @@
 package com.yokoro.moneyplanner.data.datastore.actual
 
-import com.yokoro.moneyplanner.data.database.AppDatabase
+import com.yokoro.moneyplanner.di.AppDatabase
 import com.yokoro.moneyplanner.data.database.actual.LocalActualIncome
-import com.yokoro.moneyplanner.data.database.plan.LocalExpectedIncome
 import com.yokoro.moneyplanner.domain.entity.actual.ActualIncome
 import com.yokoro.moneyplanner.domain.entity.shared.SearchRange
 import com.yokoro.moneyplanner.domain.repository.ActualIncomeRepository

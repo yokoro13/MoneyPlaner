@@ -1,6 +1,6 @@
 package com.yokoro.moneyplanner.data.datastore.plan
 
-import com.yokoro.moneyplanner.data.database.AppDatabase
+import com.yokoro.moneyplanner.di.AppDatabase
 import com.yokoro.moneyplanner.data.database.plan.LocalExpectedExpenditure
 import com.yokoro.moneyplanner.domain.entity.plan.ExpectedExpenditure
 import com.yokoro.moneyplanner.domain.entity.shared.SearchRange

@@ -1,4 +1,4 @@
-package com.yokoro.moneyplanner.data.database
+package com.yokoro.moneyplanner.di
 
 import android.content.Context
 import androidx.room.Database
@@ -34,7 +34,8 @@ abstract class AppDatabase: RoomDatabase() {
         fun getInstance(context: Context): AppDatabase =
             instance ?: synchronized(this) {
                 Room.databaseBuilder(context,
-                    AppDatabase::class.java, databaseName)
+                    AppDatabase::class.java, databaseName
+                )
                     .build()
             }
     }
