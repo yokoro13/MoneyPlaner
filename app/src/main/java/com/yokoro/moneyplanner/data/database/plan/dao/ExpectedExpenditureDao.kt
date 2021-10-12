@@ -10,11 +10,11 @@ interface ExpectedExpenditureDao {
     @Insert
     fun insert(expenditureLocal: LocalExpectedExpenditure)
 
-    @Update
-    fun update(expenditureLocal: LocalExpectedExpenditure)
+    @Query("update expected_expenditure set date = :date and value = :value and reason = :reason where id = :id")
+    fun update(id: Int, date: LocalDate, value: Int, reason: String)
 
-    @Delete
-    fun delete(expenditureLocal: LocalExpectedExpenditure)
+    @Query("delete from expected_expenditure where id = :id")
+    fun delete(id:Int)
 
     @Query("select * from expected_expenditure where date = :date")
     fun getExpectedExpenditureAt(date: Date): List<LocalExpectedExpenditure>

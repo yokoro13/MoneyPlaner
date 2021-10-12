@@ -10,11 +10,11 @@ interface ActualIncomeDao {
     @Insert
     fun insert(incomeLocal: LocalActualIncome)
 
-    @Update
-    fun update(incomeLocal: LocalActualIncome)
+    @Query("update actual_income set date = :date and value = :value and reason = :reason where id = :id")
+    fun update(id: Int, date: LocalDate, value: Int, reason: String)
 
-    @Delete
-    fun delete(incomeLocal: LocalActualIncome)
+    @Query("delete from actual_income where id = :id")
+    fun delete(id:Int)
 
     @Query("select * from actual_income where date = :date")
     fun getActualIncomeAt(date: LocalDate): List<LocalActualIncome>

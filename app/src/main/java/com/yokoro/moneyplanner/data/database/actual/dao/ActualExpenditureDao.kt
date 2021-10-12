@@ -10,11 +10,11 @@ interface ActualExpenditureDao {
     @Insert
     fun insert(expenditureLocal: LocalActualExpenditure)
 
-    @Update
-    fun update(expenditureLocal: LocalActualExpenditure)
+    @Query("update actual_expenditure set date = :date and value = :value and reason = :reason where id = :id")
+    fun update(id: Int, date: LocalDate, value: Int, reason: String)
 
-    @Delete
-    fun delete(expenditureLocal: LocalActualExpenditure)
+    @Query("delete from actual_expenditure where id = :id")
+    fun delete(id:Int)
 
     @Query("select * from actual_expenditure where date = :date")
     fun getActualExpenditureAt(date: LocalDate): List<LocalActualExpenditure>
